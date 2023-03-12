@@ -67,7 +67,7 @@ for i in range(len(pn_grid)):
     for j in range(len(test_data)):
         eq_coord = (test_data["Lat"].values[j], test_data["Long"].values[j])
         dis = haversine(study_area_coord, eq_coord)
-        if((r >= dis) and (test_data["M"].values[j] > LeastMagPredict)):
+        if((r >= dis) and (test_data["Magnitude"].values[j] > LeastMagPredict)):
             pn_grid["pn"].values[i] = 1
             break
 
