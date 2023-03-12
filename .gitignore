@@ -1,0 +1,6 @@
+
+.DS_Store
+map2.xml
+map.xml
+sql/update_details.py
+sql/update_city_detail.py
