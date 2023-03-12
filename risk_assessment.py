@@ -4,6 +4,22 @@ import os
 from haversine import haversine
 import math
 
+def roc(n):
+    a = 0
+    b = 0
+    c = 0
+    d = 0
+    for i in range(len(result)):
+        if((result["RI"].values[i] >= n) and (pn_grid["pn"].values[i] == 1)):
+            a += 1
+        elif((result["RI"].values[i] >= n) and (pn_grid["pn"].values[i] == 0)):
+            b += 1
+        elif((result["RI"].values[i] < n) and (pn_grid["pn"].values[i] == 1)):
+            c += 1
+        else:
+            d += 1
+    return (a*d - b*c)/((a + c)*(b + d)) 
+
 os.chdir(r"C:\Users\klims\Desktop\risk_assessment")
 
 # Flexible Parameters
@@ -38,7 +54,7 @@ for i in range(len(study_area)):
     for j in range(len(train_data)):
         eq_coord = (train_data["Lat"].values[j], train_data["Long"].values[j])
         dis = haversine(study_area_coord, eq_coord)
-        if(r >= dis):
+        if((r >= dis) and (train_data["Magnitude"].values[j] > min_magnitude_use)):
             sr_energy += math.e**(5.24 + (1.44*train_data["Magnitude"].values[j]))
     cbs[i] = math.sqrt(sr_energy)
 
@@ -51,7 +67,7 @@ for i in range(len(pn_grid)):
     for j in range(len(test_data)):
         eq_coord = (test_data["Lat"].values[j], test_data["Long"].values[j])
         dis = haversine(study_area_coord, eq_coord)
-        if((r >= dis) and (test_data["M"].values[j] > test_mag)):
+        if((r >= dis) and (test_data["M"].values[j] > LeastMagPredict)):
             pn_grid["pn"].values[i] = 1
             break
 
@@ -75,6 +91,3 @@ for i in range(digit_num):
 
 print("High risk for earthquake is when more than " + str(max_roc*5))
 result["RI"] = result["RI"]*5
-
-
-
