@@ -6,11 +6,11 @@ os.chdir("./Input")
 
 # เชื่อมต่อ MySQL ด้วย mysql-connector-python
 mydb = mysql.connector.connect(
-  host="8.8.8.6",
-  port="3306",
-  user="kang49",
-  password="kang49",
-  database="bk_opnsrc_hac"
+  host="",
+  port="",
+  user="",
+  password="",
+  database=""
 )
 
 #connect
