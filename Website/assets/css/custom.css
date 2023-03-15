@@ -1,0 +1,23 @@
+#hero .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    height: auto;
+    padding-top: 60px;
+  }
+
+  #hero p {
+    width: 80%;
+    animation-delay: 0.4s;
+    margin: 0 auto 10px auto;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    #hero .carousel-container {
+      height: auto;
+    }
+}
