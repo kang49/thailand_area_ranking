@@ -1,4 +1,13 @@
-# thailand_area_ranking
+# Thailand Area Ranking
+
+
+<h2 style="display: flex; align-items: center;">Introduction <img src='https://github.com/kang49/thailand_area_ranking/blob/main/assets/img/quest.gif' width="80px"></h2>
+
+
+<p>
+Thailand Area Ranking is an OpenSource project that helps users find suitable areas in Thailand by analyzing various factors, such as public transportation, schools, cost of living, employment rates, cleanliness and others. The results are displayed as Heatmaps, with redder areas indicating a better match to your needs. Additionally, developers can utilize our library in PIPY for real estate applications, such as searching for houses near water sources or incorporating local price data.
+</p>
+
 <h4>Current Database</h4>
 <a id="dataset-button" href="https://kang49.github.io/thailand_area_ranking/datasets/Data.html" target="_blank">
   <img src="https://cdn-icons-png.flaticon.com/512/603/603156.png" alt="Download Dataset" width="50" height="50">
@@ -11,3 +20,10 @@
 <a id="dataset-button" href="http://g49ds120j.ddns.net:8083/" target="_blank">
   <img src="https://publicdomainvectors.org/photos/WWW-Icon-White-on-Grey.png" alt="Download Dataset" width="50" height="50">
 </a>
+
+<h2> What's next our plan <img src='https://github.com/kang49/thailand_area_ranking/blob/main/assets/img/next.gif?raw=true' width="100px"></h2>
+
+<p>
+Our plan going forward is to create a website that includes boxes to collect data based on the information we have, and allow users to drag and rank boxes according to their importance. When the user sets all their preferences, they will see the area that best fits their set preferences in a heatmap format, along with a score for each area. In the future, we will also create a library on PIPY to make it easier for other developers to use our open-source software for their applications. 😉
+</p>
+<h6>Kankawee Aramrak 20 Mar 2023</h6>
