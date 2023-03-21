@@ -2,33 +2,33 @@
 
 
 <p align="center">
-  <a href="https://github.com/kang49/kang49regexblacklistproject/releases">
+  <a href="https://github.com/kang49/thailand_area_ranking/watchers">
     <img src="https://img.shields.io/github/watchers/kang49/thailand_area_ranking?color=%23eab676&style=for-the-badge" alt="Views">
   </a>
-  <a href="https://github.com/kang49/kang49regexblacklistproject/releases">
+  <a href="https://github.com/kang49/thailand_area_ranking/releases">
     <img src="https://img.shields.io/github/release/kang49/thailand_area_ranking.svg?style=for-the-badge&logo=appveyor" alt="Release">
   </a>
-  <a href="https://github.com/kang49/kang49regexblacklistproject/releases">
+  <a href="https://github.com/kang49/thailand_area_ranking/releases">
     <img src="https://img.shields.io/github/downloads/kang49/thailand_area_ranking/total.svg?style=for-the-badge&logo=appveyor" alt="Downloads">
   </a>
-  <a href="https://github.com/kang49/kang49regexblacklistproject/releases">
+  <a href="https://github.com/kang49/thailand_area_ranking">
     <img src="https://img.shields.io/github/repo-size/kang49/thailand_area_ranking.svg?style=for-the-badge&logo=appveyor" alt="Size">
   </a>
-  <a href="https://github.com/kang49/kang49regexblacklistproject/releases">
+  <a href="https://github.com/kang49/thailand_area_ranking/issues">
     <img src="https://img.shields.io/github/issues/kang49/thailand_area_ranking.svg?color=orange&style=for-the-badge&logo=appveyor" alt="Issues">
   </a>
-  <a href="https://github.com/kang49/kang49regexblacklistproject/releases">
+  <a href="https://github.com/kang49/thailand_area_ranking/pulls">
     <img src="https://img.shields.io/github/issues-pr-closed/kang49/thailand_area_ranking.svg?style=for-the-badge&logo=appveyor" alt="PullRequestsClosed">
-  <a href="https://github.com/kang49/kang49regexblacklistproject/releases">
+  <a href="https://github.com/kang49/thailand_area_ranking/forks">
     <img src="https://img.shields.io/github/forks/kang49/thailand_area_ranking?style=for-the-badge" alt="Forks">
   </a>
-  <a href="https://github.com/kang49/kang49regexblacklistproject/releases">
+  <a href="https://github.com/kang49/thailand_area_ranking/stargazers">
     <img src="https://img.shields.io/github/stars/kang49/thailand_area_ranking?color=white&style=for-the-badge" alt="Stars">
   </a>
-  <a href="https://github.com/kang49/kang49regexblacklistproject/releases">
+  <a href="https://github.com/kang49/thailand_area_ranking/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/kang49/thailand_area_ranking?style=for-the-badge" alt="License">
   </a>
-   <a href="https://github.com/kang49/kang49regexblacklistproject/releases">
+   <a href="https://github.com/kang49/thailand_area_ranking/graphs/contributors">
     <img src="https://img.shields.io/github/contributors/kang49/thailand_area_ranking?color=black&style=for-the-badge" alt="Contributers">
   </a>
 </p>
