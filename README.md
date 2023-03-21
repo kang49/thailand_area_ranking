@@ -32,6 +32,11 @@
     <img src="https://img.shields.io/github/contributors/kang49/thailand_area_ranking?color=black&style=for-the-badge" alt="Contributers">
   </a>
 </p>
+<p align="center">
+  <a href="https://github.com/kang49/thailand_area_ranking/graphs/contributors">
+    <img src="https://visitor-badge.glitch.me/badge?page_id=kang49.thailand_area_ranking">
+  </a>
+</p>
 
 
 
