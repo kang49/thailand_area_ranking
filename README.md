@@ -51,7 +51,7 @@ Thailand Area Ranking is an OpenSource project that helps users find suitable ar
 </a>
 <h4>Website</h4>
 <p>We currently lack some label for data. Help us at our website.</p>
-<a id="dataset-button" href="http://g49ds120j.ddns.net:8083/" target="_blank">
+<a id="dataset-button" href="https://tar.tensormik.com" target="_blank">
   <img src="https://publicdomainvectors.org/photos/WWW-Icon-White-on-Grey.png" alt="Download Dataset" width="50" height="50">
 </a>
 
