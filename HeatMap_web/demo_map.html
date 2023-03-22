@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head onload="loopcheck();">
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+
+
+    
+    <script src="drag.js" defer></script>
+    <script src="todo.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thailand Area Ranking</title>
+</head>
+<body> 
+    <!-- main -->
+    <div class="popup">
+
+    </div>
+    <div class="form-check d-inline">
+        <form class="d-flex search z-1" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" value="">
+            <button class="btn btn-outline-success btn-light" type="submit">Search</button>
+        </form>
+    </div>
+    <button id="current-location-button" class="z-1 btn btn-primary position-fixed bottom-0 start-0 ms-5 mb-5"><i class="fa-solid fa-location-crosshairs"></i></button>
+
+    <nav class="navbar bg-primary text-light navbar-fixed-top mb-0 fixed-top" >
+        <div class="container-fluid">
+          <a class="navbar-brand"  href="#">Thailand Area Ranking</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Ranking Role</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body ">
+              <div class="board">
+                <div class="swim-lane mb-3 d-block align-items-center item" id="todo-lane">
+                    <h3 class="heading">Rank 1</h3>
+                </div>
+
+                <div class="swim-lane mb-3 d-block align-items-center item" id="todo-lane">
+                    <h3 class="heading">Rank 2</h3>
+                </div>
+
+                <div class="swim-lane mb-3 d-blockalign-items-center item" id="todo-lane">
+                    <h3 class="heading">Rank 3</h3>
+                </div>
+
+                <div class="swim-lane mt-5 d-block align-items-center item" id="todo-lane">
+                    <h3 class="heading">Role</h3>
+                        
+                    <p class="task" draggable="true">Road locations</p>
+                    <p class="task" draggable="true">Water locations</p>
+                    <p class="task" draggable="true">School locations</p>
+
+                </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Thailand Area Ranking</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav> -->
+
+    
+
+    <!-- map -->
+    <div id="map" style="width: 100%; height: 400px;"></div>
+    <div class="folium-map z-0" id="map_21a9caeaea6f1d79f9479e397f78d5c4"></div>
+        
+        
+</body>
+<script src="./map.js"></script>
+</html>

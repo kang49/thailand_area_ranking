@@ -1,0 +1,178 @@
+/* ---- RESET/BASIC STYLING ---- */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.board {
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
+}
+
+/* ---- FORM ---- */
+#todo-form {
+  padding: 32px 32px 0;
+}
+
+#todo-form input {
+  padding: 12px;
+  margin-right: 12px;
+  width: 225px;
+
+  border-radius: 4px;
+  border: none;
+
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  background: white;
+
+  font-size: 14px;
+  outline: none;
+}
+
+#todo-form button {
+  padding: 12px 32px;
+
+  border-radius: 4px;
+  border: none;
+
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+  color: black;
+
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ---- BOARD ---- */
+.lanes {
+  display: flex;
+  align-items: flex-start;
+  justify-content: start;
+  gap: 16px;
+
+  padding: 24px 32px;
+
+  overflow: scroll;
+  height: 100%;
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.swim-lane {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  background: #f4f4f4;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+
+  padding: 12px;
+  border-radius: 4px;
+  width: 225px;
+  min-height: 80px;
+
+  flex-shrink: 0;
+  transition: 0.2s;
+}
+
+.task {
+  background: white;
+  color: black;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+
+  padding: 12px;
+  border-radius: 4px;
+
+  font-size: 16px;
+  cursor: move;
+}
+
+.is-dragging {
+  scale: 1.05;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  background: rgb(50, 50, 50);
+  color: white;
+}
+
+.swim-lane:hover {
+  background-color: #efefef;
+  box-shadow: 0 0 20px rgb(0, 140, 255);
+  margin-left: 5px;
+  transition: 0.3s ;
+}
+
+.item {
+  position: relative;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, 0);
+} 
+
+.navbar {
+  height: 8%;
+  margin-bottom: 0px;
+}
+
+.navbar-brand {
+  font-size: large;
+  color: #efefef;
+}
+
+.navbar-toggler-icon {
+  filter: brightness(1000);
+}
+
+.search {
+  top: 10%;
+  margin-left: 20px;
+  position: absolute;
+  z-index: 0;
+}
+
+.form-control {
+  width: 300px; /* set the width to your desired value */
+  height: 40px; /* set the height to your desired value */
+}
+
+.form-control::placeholder ,.btn{
+  font-size: 14px; /* set the font-size to your desired value */
+}
+
+.form-control::value {
+  font-size: 14px;
+}
+
+.bg-primary {
+  background-color: #2563eb;
+}
+
+/* Heat map css zone */
+
+#map_21a9caeaea6f1d79f9479e397f78d5c4 {
+  position: relative;
+  width: 100.0%;
+  height: 90.0%;
+  left: 0.0%;
+  top: 7.0%;
+}
+.leaflet-container { font-size: 1rem; }
+
+.leaflet-control-container {
+  position: absolute;
+  top: 10%;
+}
