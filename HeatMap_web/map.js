@@ -81,19 +81,25 @@ currentLocationButton.addEventListener('click', () => {
   });
 });
 
+var arlocations;
 $(document).ready(function() {
   $.ajax({
     url: 'https://tar.tensormik.com/thailand_area_ranking/HeatMap_web/sql_get_data.php',
     type: 'POST',
     success: function(response) {
-      var arlocations = JSON.parse(response);
-      console.log(arlocations);
-    }
+      arlocations = JSON.parse(response);
+      var heatMap = L.heatLayer(arlocations.map(function(arr) {
+        var latlng = arr[0].split(",");
+        return [latlng[0], latlng[1], arr[1]];
+      }), {
+        max: 1,
+        blur: 15,
+        maxZoom: 16,
+        minOpacity: 0.3,
+        radius: 35
+      }).addTo(map);
+    },
   });
-})
+});
 
-var heat_map_3c21fee1d5f6df3039ae26d790bdd8b0 = L.heatLayer(
-    
-    {"max":1 , "blur": 15, "maxZoom": 16, "minOpacity": 0.3, "radius": 35  }
-);
-heat_map_3c21fee1d5f6df3039ae26d790bdd8b0.addTo(map);
+

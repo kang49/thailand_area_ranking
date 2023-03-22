@@ -14,7 +14,7 @@ if (!$conn) {
 $log_data = "Connected to MySQL database on $servername:$port as $username\n";
 
 
-$sql = "SELECT locations,restaurant_value FROM details LIMIT 5";
+$sql = "SELECT locations,restaurant_value FROM details";
 $result = mysqli_query($conn, $sql);
 $arlocations = array();
 
