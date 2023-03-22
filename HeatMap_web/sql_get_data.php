@@ -14,17 +14,20 @@ if (!$conn) {
 $log_data = "Connected to MySQL database on $servername:$port as $username\n";
 
 
-$sql = "SELECT locations,restaurant_value FROM details";
+$sql = "SELECT locations,restaurant_value FROM details LIMIT 5";
 $result = mysqli_query($conn, $sql);
 $arlocations = array();
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        array_push($arlocations,$row["locations"],$row["restaurant_value"]);
+        array_push($arlocations,array(
+            $row['locations'],$row['restaurant_value']
+        ));
     }
 } else {
     echo "0 results";
 }
+
 echo json_encode($arlocations);
 ?>
