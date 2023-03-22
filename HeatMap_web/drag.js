@@ -11,7 +11,7 @@ draggables.forEach((task) => {
   });
   task.addEventListener("dragend", (ev) => {
     task.classList.remove("is-dragging");
-    console.log(task.textContent + ' ==> '+ task.parentElement.textContent.split('\n')[1]);
+    // console.log(task.textContent + ' ==> '+ task.parentElement.textContent.split('\n')[1]);
     checktable();
   });
 });
@@ -63,49 +63,32 @@ const insertAboveTask = (zone, mouseY) => {
 function checktable () {
   var tasks = document.querySelectorAll(".swim-lane");
   tasks.forEach((task) => {
-    var taskhead = task.textContent;
-    var arTask = taskhead.split('\n')
-    var cuttask = arTask.slice(2).map((item) => item.trim()).join(', ');
-    var headdingRole = taskhead.split('\n')[1].trim()
+    //  foreach "tasks" เพื่อหาว่าในนั้นมีอะไรอยู่บ้าง
+    var taskhead = task.textContent; // เอาแค่ส่วน text ที่ได้เขียนไป (<>text</>)
+    var arTask = taskhead.replace(/([a-z])([A-Z])/g, '$1\n$2').split('\n') // ทำให้มีการเว้นบรรทัน เพื่อไม่ให้มันติดกัน
+    var cuttask = arTask.slice(2).map((item) => item.trim()).join(', '); // เลือกตัวที่ 2 เป็นต้อนไป แล้วทำให้มันมีการเว้นด้วย ,
+    var headdingRole = taskhead.split('\n')[1].trim() // เอาเฉพราะหัวข้อที่ index 1 ของ teskhead มา 
     
-    if (headdingRole === 'Rank 1'){
-      console.log(cuttask);
-      if (cuttask.includes('Road locations')) {
-        
-      }
-      if (cuttask.includes('Water locations')) {
-        
-      }
-      if (cuttask.includes('School locations')) {
-        
-      }
+    // สร้าง list ไว้เก็บค่า ที่เมื่อปุ่มไปอยู๋ใน ช่องต่างๆ
+    var rank1_obj = []
+    var rank2_obj = []
+    var rank3_obj = []
+
+    // เช็คว่ามี button role ไปอยู่ ในช่องไหนบ้าง แล้ว add เข้า list
+    if (headdingRole === 'Rank 1'){   
+      rank1_obj = [cuttask]
+      console.log("rank 1 " + rank1_obj)
     }
-    if (headdingRole === 'Rank 2'){
-      console.log(cuttask);
-      if (cuttask.includes('Road locations')) {
-        
-      }
-      if (cuttask.includes('Water locations')) {
-        
-      }
-      if (cuttask.includes('School locations')) {
-        
-      }
+    if (headdingRole === 'Rank 2'){   
+      rank2_obj = [cuttask]
+      console.log("rank 2 " + rank2_obj)
     }
     if (headdingRole === 'Rank 3'){
-      console.log(cuttask);
-      if (cuttask.includes('Road locations')) {
-        
-      }
-      if (cuttask.includes('Water locations')) {
-        
-      }
-      if (cuttask.includes('School locations')) {
-        
-      }
+      rank3_obj = [cuttask]
+      console.log("rank 3 " + rank3_obj)
     }
     if (headdingRole === 'Role') {
-      // more code for Role 
+      
     }
   });
 }
