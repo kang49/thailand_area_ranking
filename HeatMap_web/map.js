@@ -17,8 +17,8 @@ var map = L.map(
         center: [13.7541,100.5309],
         crs: L.CRS.EPSG3857,
         zoom: 13,
-        zoomControl: true,
         preferCanvas: false,
+        zoomControl: false
     }
 );
 
