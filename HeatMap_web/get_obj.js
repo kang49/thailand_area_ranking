@@ -2,17 +2,23 @@
 const draggables = document.querySelectorAll(".task");
 const droppables = document.querySelectorAll(".swim-lane");
 
+const info1 = document.querySelector(".info1");
+const info2 = document.querySelector(".info2");
+const info3 = document.querySelector(".info3");
 
 // เพิ่ม event listeners สำหรับ drag and drop ในทุก draggables
-draggables.forEach((task) => {
-  task.addEventListener("dragstart", (ev) => {
-    task.classList.add("is-dragging");
+document.addEventListener("DOMContentLoaded", () => {
+  // เพิ่ม event listeners สำหรับ drag and drop ในทุก draggables
+  draggables.forEach(task => {
+    task.addEventListener("dragstart", ev => {
+      task.classList.add("is-dragging");
+      
+    });
 
-  });
-  task.addEventListener("dragend", (ev) => {
-    task.classList.remove("is-dragging");
-    // console.log(task.textContent + ' ==> '+ task.parentElement.textContent.split('\n')[1]);
-    checktable();
+    task.addEventListener("dragend", ev => {
+      task.classList.remove("is-dragging");
+      checktable();
+    });
   });
 });
 
@@ -24,7 +30,11 @@ droppables.forEach((zone) => {
     const bottomTask = insertAboveTask(zone, e.clientY); // เรียกใช้ฟังก์ชัน insertAboveTask เพื่อหา task ที่อยู่ด้านล่างสุด
     const curTask = document.querySelector(".is-dragging"); // หา DOM element ที่กำลังถูกลาก
     const parentZone = curTask.parentElement; // หา parent element ของ curTask
-
+    if (curTask) {
+      info1.classList.add("hide");
+      info2.classList.add("hide");
+      info3.classList.add("hide");
+    }
 
     if (!bottomTask) { // ถ้าไม่มี task ที่อยู่ด้านล่างของ zone
       zone.appendChild(curTask); // เพิ่ม curTask เป็น child ของ zone
