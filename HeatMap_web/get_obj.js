@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   draggables.forEach(task => {
     task.addEventListener("dragstart", ev => {
       task.classList.add("is-dragging");
-      
     });
 
     task.addEventListener("dragend", ev => {
