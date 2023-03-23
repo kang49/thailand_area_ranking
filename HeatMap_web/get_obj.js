@@ -81,17 +81,17 @@ function checktable () {
   for (var i = 0; i < swim_lanes.length; i++) {
     var task_head = swim_lanes[i].querySelector('h3.heading').textContent.trim();
 
-    if (task_head === 'Rank 1') {
+    if (task_head === 'First') {
       var rank1_tasks = swim_lanes[i].querySelectorAll('.task');
       for (var j = 0; j < rank1_tasks.length; j++) {
         rank1_obj.push(rank1_tasks[j].textContent.trim());
       }
-    } else if (task_head === 'Rank 2') {
+    } else if (task_head === 'Second') {
       var rank2_tasks = swim_lanes[i].querySelectorAll('.task');
       for (var j = 0; j < rank2_tasks.length; j++) {
         rank2_obj.push(rank2_tasks[j].textContent.trim());
       }
-    } else if (task_head === 'Rank 3') {
+    } else if (task_head === 'Third') {
       var rank3_tasks = swim_lanes[i].querySelectorAll('.task');
       for (var j = 0; j < rank3_tasks.length; j++) {
         rank3_obj.push(rank3_tasks[j].textContent.trim());
@@ -101,21 +101,21 @@ function checktable () {
 
   // send the data to the server
   var xhttp = new XMLHttpRequest();
+  var form_data = new FormData();
+  form_data.append("rank1_obj", JSON.stringify(rank1_obj));
+  form_data.append("rank2_obj", JSON.stringify(rank2_obj));
+  form_data.append("rank3_obj", JSON.stringify(rank3_obj));
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       console.log(this.responseText);
     }
   };
-  var form_data = new FormData();
-  form_data.append("rank1_obj", JSON.stringify(rank1_obj));
-  form_data.append("rank2_obj", JSON.stringify(rank2_obj));
-  form_data.append("rank3_obj", JSON.stringify(rank3_obj));
-  if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
-    xhttp.open("POST", "ranking_gen.php", true);
-    xhttp.send(form_data);
-  }
-
+  xhttp.open("POST", "ranking_gen.php");
+  xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  var form_data = "rank1_obj=" + JSON.stringify(rank1_obj) + "&rank2_obj=" + JSON.stringify(rank2_obj) + "&rank3_obj=" + JSON.stringify(rank3_obj);
+  xhttp.send(form_data);
 }
+
 
 function updatepopup(text) {
   var popup = document.querySelectorAll('div.popup')
