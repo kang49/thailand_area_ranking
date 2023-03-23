@@ -61,61 +61,50 @@ const insertAboveTask = (zone, mouseY) => {
 };
 
 function checktable () {
-  var tasks = document.querySelectorAll(".swim-lane");
-  tasks.forEach((task) => {
-    //  foreach "tasks" เพื่อหาว่าในนั้นมีอะไรอยู่บ้าง
-    var taskhead = task.textContent; // เอาแค่ส่วน text ที่ได้เขียนไป (<>text</>)
-    var arTask = taskhead.replace(/([a-z])([A-Z])/g, '$1\n$2').split('\n') // ทำให้มีการเว้นบรรทัน เพื่อไม่ให้มันติดกัน
-    var cuttask = arTask.slice(2).map((item) => item.trim()).join(', '); // เลือกตัวที่ 2 เป็นต้อนไป แล้วทำให้มันมีการเว้นด้วย ,
-    var headdingRole = taskhead.split('\n')[1].trim() // เอาเฉพราะหัวข้อที่ index 1 ของ teskhead มา 
-    
-    // สร้าง list ไว้เก็บค่า ที่เมื่อปุ่มไปอยู๋ใน ช่องต่างๆ
-    var rank1_obj = []
-    var rank2_obj = []
-    var rank3_obj = []
+  var rank1_obj = [];
+  var rank2_obj = [];
+  var rank3_obj = [];
 
-    var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          console.log(this.responseText);
-        }
-      };
-      // Send to the PHP script
-      var form_data = new FormData();
+  // create an array of swim-lanes
+  var swim_lanes = document.querySelectorAll('.swim-lane');
 
-    // เช็คว่ามี button role ไปอยู่ ในช่องไหนบ้าง แล้ว add เข้า list
-    if (headdingRole === 'Rank 1'){   
-      rank1_obj = [cuttask]
-      rank2_obj = ''
-      rank3_obj = ''
+  // loop through each swim-lane and add tasks to the appropriate list
+  for (var i = 0; i < swim_lanes.length; i++) {
+    var task_head = swim_lanes[i].querySelector('h3.heading').textContent.trim();
 
-      form_data.append("rank1_obj", rank1_obj);
-      xhttp.open("GET", "ranking_gen.php?rank1_obj="+rank1_obj+"&rank2_obj="+rank2_obj+"&rank3_obj="+rank3_obj, true);
-      xhttp.send();
+    if (task_head === 'Rank 1') {
+      var rank1_tasks = swim_lanes[i].querySelectorAll('.task');
+      for (var j = 0; j < rank1_tasks.length; j++) {
+        rank1_obj.push(rank1_tasks[j].textContent.trim());
+      }
+    } else if (task_head === 'Rank 2') {
+      var rank2_tasks = swim_lanes[i].querySelectorAll('.task');
+      for (var j = 0; j < rank2_tasks.length; j++) {
+        rank2_obj.push(rank2_tasks[j].textContent.trim());
+      }
+    } else if (task_head === 'Rank 3') {
+      var rank3_tasks = swim_lanes[i].querySelectorAll('.task');
+      for (var j = 0; j < rank3_tasks.length; j++) {
+        rank3_obj.push(rank3_tasks[j].textContent.trim());
+      }
     }
-    if (headdingRole === 'Rank 2'){   
-      rank1_obj = ''
-      rank2_obj = [cuttask]
-      rank3_obj = ''
+  }
 
-      form_data.append("rank2_obj", rank2_obj);
-      xhttp.open("GET", "ranking_gen.php?rank1_obj="+rank1_obj+"&rank2_obj="+rank2_obj+"&rank3_obj="+rank3_obj, true);
-      xhttp.send();
+  // send the data to the server
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
     }
-    if (headdingRole === 'Rank 3'){
-      rank1_obj = ''
-      rank2_obj = ''
-      rank3_obj = [cuttask]
-
-
-      form_data.append("rank3_obj", rank3_obj);
-      xhttp.open("GET", "ranking_gen.php?rank1_obj="+rank1_obj+"&rank2_obj="+rank2_obj+"&rank3_obj="+rank3_obj, true);
-      xhttp.send();
-    }
-    if (headdingRole === 'Role') {
-      
-    }
-  });
+  };
+  var form_data = new FormData();
+  form_data.append("rank1_obj", JSON.stringify(rank1_obj));
+  form_data.append("rank2_obj", JSON.stringify(rank2_obj));
+  form_data.append("rank3_obj", JSON.stringify(rank3_obj));
+  if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
+    xhttp.open("POST", "ranking_gen.php", true);
+    xhttp.send(form_data);
+  }
 
 }
 
