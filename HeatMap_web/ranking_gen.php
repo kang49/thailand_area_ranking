@@ -3,9 +3,9 @@
     $rank1_obj = $_GET['rank1_obj'];
     $rank2_obj = $_GET['rank2_obj'];
     $rank3_obj = $_GET['rank3_obj'];
-    echo '<br>Received obj1: ' . $rank1_obj;
-    echo '<br>Received obj2: ' . $rank2_obj;
-    echo '<br>Received obj3: ' . $rank3_obj;
+    echo 'Received obj1: ' . $rank1_obj;
+    echo 'Received obj2: ' . $rank2_obj;
+    echo 'Received obj3: ' . $rank3_obj;
 
     $servername = "8.8.8.6"; // Replace with your server name
     $username = "tsm_public"; // Replace with your MySQL username

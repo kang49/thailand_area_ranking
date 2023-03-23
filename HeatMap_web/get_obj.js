@@ -74,64 +74,47 @@ function checktable () {
     var rank2_obj = []
     var rank3_obj = []
 
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(this.responseText);
+        }
+      };
+      // Send to the PHP script
+      var form_data = new FormData();
+
     // เช็คว่ามี button role ไปอยู่ ในช่องไหนบ้าง แล้ว add เข้า list
     if (headdingRole === 'Rank 1'){   
       rank1_obj = [cuttask]
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          console.log(this.responseText);
-        }
-      };
-      // Send to the PHP script
-      var form_data = new FormData();
+      rank2_obj = ''
+      rank3_obj = ''
 
       form_data.append("rank1_obj", rank1_obj);
-      xhttp.open("GET", "ranking_gen.php?rank1_obj="+rank1_obj, true);
+      xhttp.open("GET", "ranking_gen.php?rank1_obj="+rank1_obj+"&rank2_obj="+rank2_obj+"&rank3_obj="+rank3_obj, true);
       xhttp.send();
-      console.log('send_form_data completed')
     }
     if (headdingRole === 'Rank 2'){   
+      rank1_obj = ''
       rank2_obj = [cuttask]
-
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          console.log(this.responseText);
-        }
-      };
-      // Send to the PHP script
-      var form_data = new FormData();
+      rank3_obj = ''
 
       form_data.append("rank2_obj", rank2_obj);
-      xhttp.open("GET", "ranking_gen.php?rank2_obj="+rank2_obj, true);
+      xhttp.open("GET", "ranking_gen.php?rank1_obj="+rank1_obj+"&rank2_obj="+rank2_obj+"&rank3_obj="+rank3_obj, true);
       xhttp.send();
-      console.log('send_form_data completed')
     }
     if (headdingRole === 'Rank 3'){
+      rank1_obj = ''
+      rank2_obj = ''
       rank3_obj = [cuttask]
 
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          console.log(this.responseText);
-        }
-      };
-      // Send to the PHP script
-      var form_data = new FormData();
 
       form_data.append("rank3_obj", rank3_obj);
-      xhttp.open("GET", "ranking_gen.php?rank3_obj="+rank3_obj, true);
+      xhttp.open("GET", "ranking_gen.php?rank1_obj="+rank1_obj+"&rank2_obj="+rank2_obj+"&rank3_obj="+rank3_obj, true);
       xhttp.send();
-      console.log('send_form_data completed')
     }
     if (headdingRole === 'Role') {
       
     }
-    
-    
-    
   });
 
 }
