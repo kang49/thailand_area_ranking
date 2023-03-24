@@ -2,9 +2,10 @@
     header('Content-type: text/plain; charset=utf-8');
 
     //Get data
-    $rank1_obj = $_POST['rank1_obj'];
-    $rank2_obj = $_POST['rank2_obj'];
-    $rank3_obj = $_POST['rank3_obj'];
+    $rank1_obj = json_decode($_POST['rank1_obj'], true);
+    $rank2_obj = json_decode($_POST['rank2_obj'], true);
+    $rank3_obj = json_decode($_POST['rank3_obj'], true);
+
 
     // if ($rank1_obj != null){
     //     echo 'Received obj1: ' . $rank1_obj;
@@ -109,14 +110,19 @@
         $value = round($value, 3);
     }
     $percent_slum_list = array_combine($locations_list, $percent_slum_list); //รวม locations กัับ percent
+    $percent_slum_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_slum_list));
 
+  
+    
 
     //currents_price
     foreach ($currents_price_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -136,14 +142,19 @@
         $value = round($value, 3);
     }
     $percent_currents_price_list = array_combine($locations_list, $percent_currents_price_list); //รวม locations กัับ percent
+    $percent_currents_price_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_currents_price_list));
+
+
 
 
     //pb_trans_value
     foreach ($pb_trans_value_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -159,15 +170,18 @@
         $value = round($value, 3);
     }
     $percent_pb_trans_value_list = array_combine($locations_list, $percent_pb_trans_value_list); //รวม locations กัับ percent
+    $percent_pb_trans_value_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_pb_trans_value_list));
 
 
 
     //future_price
     // foreach ($future_price_list as &$value) { //จัดการค่่า null และค่า 0
     //     if ($value == 0) {
-    //         $value = -1;
+    //         $value = 0;
     //     } elseif ($value == null) {
-    //         $value = -1;
+    //         $value = 0;
     //     }
     // }print_r($future_price_list)
 
@@ -183,6 +197,9 @@
     //     $value = round($value, 3);
     // }
     // $percent_future_price_list = array_combine($locations_list, $percent_future_price_list); //รวม locations กัับ percent
+    // $percent_future_price_list_int = array_map(function($value) {
+    //     return number_format($value, 3);
+    // },  array_values($percent_future_price_list));
 
 
 
@@ -190,9 +207,9 @@
     //travel_conven
     // foreach ($travel_conven_list as &$value) { //จัดการค่่า null และค่า 0
     //     if ($value == 0) {
-    //         $value = -1;
+    //         $value = 0;
     //     } elseif ($value == null) {
-    //         $value = -1;
+    //         $value = 0;
     //     }
     // }
 
@@ -208,6 +225,10 @@
     //     $value = round($value, 3);
     // }
     // $percent_travel_conven_list = array_combine($locations_list, $percent_travel_conven_list); //รวม locations กัับ percent
+    // $percent_travel_conven_list_int = array_map(function($value) {
+    //     return number_format($value, 3);
+    // },  array_values($percent_travel_conven_list));
+
 
 
 
@@ -215,9 +236,9 @@
     //restaurant_value
     foreach ($restaurant_value_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -233,6 +254,10 @@
         $value = round($value, 3);
     }
     $percent_restaurant_value_list = array_combine($locations_list, $percent_restaurant_value_list); //รวม locations กัับ percent
+    $percent_restaurant_value_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_restaurant_value_list));
+
 
 
 
@@ -241,9 +266,9 @@
     //electric_stats
     // foreach ($electric_stats_list as &$value) { //จัดการค่่า null และค่า 0
     //     if ($value == 0) {
-    //         $value = -1;
+    //         $value = 0;
     //     } elseif ($value == null) {
-    //         $value = -1;
+    //         $value = 0;
     //     }
     // }
 
@@ -259,15 +284,19 @@
     //     $value = round($value, 3);
     // }
     // $percent_electric_stats_list = array_combine($locations_list, $percent_electric_stats_list); //รวม locations กัับ percent
+    // $percent_electric_stats_list_int = array_map(function($value) {
+    //     return number_format($value, 3);
+    // },  array_values($percent_electric_stats_list));    
+
 
 
 
     // //water_stats
     foreach ($water_stats_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -286,6 +315,9 @@
         $value = round($value, 3);
     }
     $percent_water_stats_list = array_combine($locations_list, $percent_water_stats_list); //รวม locations กัับ percent
+    $percent_water_stats_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_water_stats_list));
 
 
 
@@ -293,9 +325,9 @@
     //clean_stats
     foreach ($clean_stats_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -311,6 +343,9 @@
         $value = round($value, 3);
     }
     $percent_clean_stats_list = array_combine($locations_list, $percent_clean_stats_list); //รวม locations กัับ percent
+    $percent_clean_stats_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_clean_stats_list));
 
 
 
@@ -318,9 +353,9 @@
     //walkway_stats
     foreach ($walkway_stats_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -336,15 +371,19 @@
         $value = round($value, 3);
     }
     $percent_walkway_stats_list = array_combine($locations_list, $percent_walkway_stats_list); //รวม locations กัับ percent
+    $percent_walkway_stats_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_walkway_stats_list));
+
 
 
 
     //earthquake
     foreach ($earthquake_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -360,15 +399,18 @@
         $value = round($value, 3);
     }
     $percent_earthquake_list = array_combine($locations_list, $percent_earthquake_list); //รวม locations กัับ percent
+    $percent_earthquake_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_earthquake_list));
 
 
 
     //school_value
     foreach ($school_value_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -384,6 +426,9 @@
         $value = round($value, 3);
     }
     $percent_school_value_list = array_combine($locations_list, $percent_school_value_list); //รวม locations กัับ percent
+    $percent_school_value_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_school_value_list));
 
 
 
@@ -391,9 +436,9 @@
     //university_value
     foreach ($university_value_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -409,7 +454,9 @@
         $value = round($value, 3);
     }
     $percent_university_value_list = array_combine($locations_list, $percent_university_value_list); //รวม locations กัับ percent
-
+    $percent_university_value_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_university_value_list));
   
   
   
@@ -460,9 +507,9 @@
     //airport_status
     foreach ($airport_status_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -478,6 +525,9 @@
         $value = round($value, 3);
     }
     $percent_airport_status_list = array_combine($name_list, $percent_airport_status_list); //รวม locations กัับ percent  
+    $percent_airport_status_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_airport_status_list));
 
 
 
@@ -486,9 +536,9 @@
     //temp_avg
     foreach ($temp_avg_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -507,16 +557,18 @@
         $value = round($value, 3);
     }
     $percent_temp_avg_list = array_combine($name_list, $percent_temp_avg_list); //รวม locations กัับ percent  
-    
+    $percent_temp_avg_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_temp_avg_list));
 
 
 
     //sea_status
     foreach ($sea_status_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -532,7 +584,9 @@
         $value = round($value, 3);
     }
     $percent_sea_status_list = array_combine($name_list, $percent_sea_status_list); //รวม locations กัับ percent
-
+    $percent_sea_status_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_sea_status_list));
 
 
 
@@ -540,9 +594,9 @@
     // //flood_stats
     // foreach ($flood_stats_list as &$value) { //จัดการค่่า null และค่า 0
     //     if ($value == 0) {
-    //         $value = -1;
+    //         $value = 0;
     //     } elseif ($value == null) {
-    //         $value = -1;
+    //         $value = 0;
     //     }
     // }
 
@@ -558,7 +612,9 @@
     //     $value = round($value, 3);
     // }
     // $percent_flood_stats_list = array_combine($name_list, $percent_flood_stats_list); //รวม locations กัับ percent
-    
+    // $percent_flood_stats_list_int = array_map(function($value) {
+    //     return number_format($value, 3);
+    // },  array_values($percent_flood_stats_list));
 
 
 
@@ -566,9 +622,9 @@
     // //tourist_stats
     // foreach ($tourist_stats_list as &$value) { //จัดการค่่า null และค่า 0
     //     if ($value == 0) {
-    //         $value = -1;
+    //         $value = 0;
     //     } elseif ($value == null) {
-    //         $value = -1;
+    //         $value = 0;
     //     }
     // }
 
@@ -584,7 +640,9 @@
     //     $value = round($value, 3);
     // }
     // $percent_tourist_stats_list = array_combine($name_list, $percent_tourist_stats_list); //รวม locations กัับ percent
-    
+    // $percent_tourist_stats_list_int = array_map(function($value) {
+    //     return number_format($value, 3);
+    // },  array_values($percent_tourist_stats_list));
 
 
 
@@ -592,9 +650,9 @@
     // //employment_stats
     // foreach ($employment_stats_list as &$value) { //จัดการค่่า null และค่า 0
     //     if ($value == 0) {
-    //         $value = -1;
+    //         $value = 0;
     //     } elseif ($value == null) {
-    //         $value = -1;
+    //         $value = 0;
     //     }
     // }
 
@@ -610,7 +668,9 @@
     //     $value = round($value, 3);
     // }
     // $percent_employment_stats_list = array_combine($name_list, $percent_employment_stats_list); //รวม locations กัับ percent
-    
+    // $percent_employment_stats_list_int = array_map(function($value) {
+    //     return number_format($value, 3);
+    // },  array_values($percent_employment_stats_list));
 
 
 
@@ -618,9 +678,9 @@
     //citizen_income_avg
     foreach ($citizen_income_avg_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
-            $value = -1;
+            $value = 0;
         } elseif ($value == null) {
-            $value = -1;
+            $value = 0;
         }
     }
 
@@ -636,6 +696,48 @@
         $value = round($value, 3);
     }
     $percent_citizen_income_avg_list = array_combine($name_list, $percent_citizen_income_avg_list); //รวม locations กัับ percent
+    $percent_citizen_income_avg_list_int = array_map(function($value) {
+        return number_format($value, 3);
+    },  array_values($percent_citizen_income_avg_list));
+
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+    //นำเฉพาะค่าที่ผู้ใช้เลืิอกมาคำนวน
+    // $arA = array(1, 2, 3);
+    // $arB = array(4, 5, 6);
+    // $arC = array(7, 8, 9);
+
+    // $x = ['a', 'c'];
+
+    $rank1_obj_select = array();
+    $map_obj = array(
+        'slum' => $percent_slum_list_int,
+        'pb_trans_value' => $percent_pb_trans_value_list_int,
+        'restaurant_value' => $percent_restaurant_value_list_int,
+    );
+
+    foreach ($rank1_obj as $char) {
+        array_push($rank1_obj_select, $map_obj[$char]);
+    }
+
+    $locations_percent_sum = array_reduce($rank1_obj_select, function ($carry, $arr) {
+        return array_map(function ($rank1_obj, $rank1_obj_select) {
+            return $rank1_obj + $rank1_obj_select;
+        }, $carry, $arr);
+    }, array_fill(0, count($rank1_obj_select), 0));
+
+    $locations_percent_max_percent = max($locations_percent_sum); // หาค่าสูงสุดใน array
+    $percent_sum = 0;
+    foreach ($locations_percent_sum as &$value) {
+        $value = round($value / $locations_percent_max_percent * 100, 3); // คำนวณค่าเปอร์เซ็นต์และเปลี่ยนเป็นทศนิยม 3 ตำแหน่ง
+        $percent_sum += $value; // บวกเพื่อหาผลรวมของเปอร์เซ็นต์ทั้งหมด
+    }
+    $result_locations_percent = array_combine($locations_list, $locations_percent_sum); //รวม locations กัับ ALL result percent
+    print_r($result_locations_percent);
+
 
 
 
