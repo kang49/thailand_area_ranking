@@ -99,22 +99,59 @@ function checktable () {
     }
   }
 
+  // Listen for the 'phpData' event and update the heatmap layer with the data
+  document.addEventListener('phpData', function (e) {
+    var data = e.detail;
+    heatmapLayer.setLatLngs(data);
+  });
+
+  // Define a global variable to store the response text
+  var textRespons;
+  let newData = [];
+  let phpData;
+
   // send the data to the server
   var xhttp = new XMLHttpRequest();
   var form_data = new FormData();
   form_data.append("rank1_obj", JSON.stringify(rank1_obj));
   form_data.append("rank2_obj", JSON.stringify(rank2_obj));
   form_data.append("rank3_obj", JSON.stringify(rank3_obj));
-  xhttp.onreadystatechange = function() {
+  xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
+      // Store the response text in the global variable
+      textRespons = this.responseText;
+      // ข้อมูลที่มาจาก PHP
+      if (textRespons == 'Noting') { // มันจะมีการส่งค่า nothing จาก php กลับมาด้วย เมื่อ ไม่มีการใส่ อะไรลงในช่อง ตอนวางเสร็จ
+        console.log("Noting")
+        newData = [[0,0,0]]
+        var event = new CustomEvent('phpData', { detail: newData });
+        document.dispatchEvent(event);
+      } else {
+        phpData = JSON.parse(textRespons);
+        
+
+        Object.keys(phpData).forEach(function (key) { // แปลง array ที่ได้มาจาก php เป็น list ที่ถูกต้อง 
+          var coords = key.split(',');
+          var lat = parseFloat(coords[0]);
+          var lon = parseFloat(coords[1]);
+          var intensity = phpData[key];
+          newData.push([lat, lon, intensity]);
+        });
+
+        
+        // สร้าง Event และส่งข้อมูลไปกับ Event
+        var event = new CustomEvent('phpData', { detail: newData });
+        document.dispatchEvent(event);
+      }
     }
   };
   xhttp.open("POST", "ranking_gen.php");
   xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   var form_data = "rank1_obj=" + JSON.stringify(rank1_obj) + "&rank2_obj=" + JSON.stringify(rank2_obj) + "&rank3_obj=" + JSON.stringify(rank3_obj);
   xhttp.send(form_data);
+
 }
+
 
 
 function updatepopup(text) {

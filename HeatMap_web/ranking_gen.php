@@ -40,7 +40,7 @@
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     //Get table details
-    $sql_details = "SELECT * FROM details ORDER BY `details`.`locations` ASC LIMIT 1000";
+    $sql_details = "SELECT * FROM details ORDER BY `details`.`locations` ASC";
     $result_details = mysqli_query($conn, $sql_details);
 
     //create lists for column in details
@@ -466,7 +466,7 @@
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // Get table city_details
-    $sql_city_details = "SELECT * FROM city_details ORDER BY `city_details`.`name` ASC LIMIT 1000";
+    $sql_city_details = "SELECT * FROM city_details ORDER BY `city_details`.`name` ASC";
     $result_city_details = mysqli_query($conn, $sql_city_details);
 
     //create lists for column in city_details
@@ -707,13 +707,13 @@
     if (!empty($rank1_obj)) {
         $rank1_obj_select = array();
         $map_obj = array(
-            'Slum' => $percent_slum_list_int,
+            'No Slum' => $percent_slum_list_int,
             'Home Prices' => $percent_currents_price_list_int,
             'Public Transport' => $percent_pb_trans_value_list_int,
             'Restaurant' => $percent_restaurant_value_list_int,
             'Good Plumbing' => $percent_water_stats_list_int,
             'Cleanliness' => $percent_clean_stats_list_int,
-            'EarthQuake' => $percent_earthquake_list_int,
+            'No EarthQuake' => $percent_earthquake_list_int,
             'Walk Way' => $percent_walkway_stats_list_int,
             'School' => $percent_school_value_list_int,
             'University' => $percent_university_value_list_int,
@@ -748,13 +748,13 @@
     if (!empty($rank2_obj)) {
         $rank2_obj_select = array();
         $map_obj = array(
-            'Slum' => $percent_slum_list_int,
+            'No Slum' => $percent_slum_list_int,
             'Home Prices' => $percent_currents_price_list_int,
             'Public Transport' => $percent_pb_trans_value_list_int,
             'Restaurant' => $percent_restaurant_value_list_int,
             'Good Plumbing' => $percent_water_stats_list_int,
             'Cleanliness' => $percent_clean_stats_list_int,
-            'EarthQuake' => $percent_earthquake_list_int,
+            'No EarthQuake' => $percent_earthquake_list_int,
             'Walk Way' => $percent_walkway_stats_list_int,
             'School' => $percent_school_value_list_int,
             'University' => $percent_university_value_list_int,
@@ -789,13 +789,13 @@
     if (!empty($rank3_obj)) {
         $rank3_obj_select = array();
         $map_obj = array(
-            'Slum' => $percent_slum_list_int,
+            'No Slum' => $percent_slum_list_int,
             'Home Prices' => $percent_currents_price_list_int,
             'Public Transport' => $percent_pb_trans_value_list_int,
             'Restaurant' => $percent_restaurant_value_list_int,
             'Good Plumbing' => $percent_water_stats_list_int,
             'Cleanliness' => $percent_clean_stats_list_int,
-            'EarthQuake' => $percent_earthquake_list_int,
+            'No EarthQuake' => $percent_earthquake_list_int,
             'Walk Way' => $percent_walkway_stats_list_int,
             'School' => $percent_school_value_list_int,
             'University' => $percent_university_value_list_int,
@@ -845,7 +845,10 @@
                 return ($value / $max_value) * 100;
             }, $result_sum_locations);
             
-            print_r($result_sum_locations); // 1 1 1
+            
+            $result_all_sum_rank_locations = array_combine($locations_list, $result_sum_locations); //รวม locations กัับ result
+            // print_r($result_all_sum_rank_locations); // 1 1 1
+            echo json_encode($result_all_sum_rank_locations);
             }
             else {
                 $result_sum_locations = array_map(function($a, $b) {
@@ -856,7 +859,10 @@
                     return ($value / $max_value) * 100;
                 }, $result_sum_locations);
                 
-                print_r($result_sum_locations); // 1 1 0
+                
+                $result_all_sum_rank_locations = array_combine($locations_list, $result_sum_locations); //รวม locations กัับ resul
+                // print_r($result_all_sum_rank_locations); // 1 1 0
+                echo json_encode($result_all_sum_rank_locations);
             }
         }
         elseif (!empty($rank3_obj)) {
@@ -868,7 +874,10 @@
                 return ($value / $max_value) * 100;
             }, $result_sum_locations);
             
-            print_r($result_sum_locations); // 1 0 1
+            
+            $result_all_sum_rank_locations = array_combine($locations_list, $result_sum_locations); //รวม locations กัับ result
+            // print_r($result_all_sum_rank_locations); // 1 0 1
+            echo json_encode($result_all_sum_rank_locations);
         }
         else {
             $result_sum_locations = array_map(function($a) {
@@ -879,7 +888,10 @@
                 return ($value / $max_value) * 100;
             }, $result_sum_locations);
             
-            print_r($result_sum_locations); // 1 0 0
+            
+            $result_all_sum_rank_locations = array_combine($locations_list, $result_sum_locations); //รวม locations กัับ result
+            // print_r($result_all_sum_rank_locations); // 1 0 0
+            echo json_encode($result_all_sum_rank_locations);
         }
     }
     elseif (!empty($rank2_obj)) {
@@ -892,7 +904,10 @@
                 return ($value / $max_value) * 100;
             }, $result_sum_locations);
             
-            print_r($result_sum_locations); // 0 1 1
+            
+            $result_all_sum_rank_locations = array_combine($locations_list, $result_sum_locations); //รวม locations กัับ result
+            // print_r($result_all_sum_rank_locations); // 0 1 1
+            echo json_encode($result_all_sum_rank_locations);
         }
         else {
             $result_sum_locations = array_map(function($b) {
@@ -903,7 +918,10 @@
                 return ($value / $max_value) * 100;
             }, $result_sum_locations);
             
-            print_r($result_sum_locations); // 0 1 0
+            
+            $result_all_sum_rank_locations = array_combine($locations_list, $result_sum_locations); //รวม locations กัับ result
+            // print_r($result_all_sum_rank_locations); // 0 1 0
+            echo json_encode($result_all_sum_rank_locations);
         }
     }
     else {
@@ -916,7 +934,11 @@
                 return ($value / $max_value) * 100;
             }, $result_sum_locations);
             
-            print_r($result_sum_locations); // 0 0 1
+            
+            $result_all_sum_rank_locations = array_combine($locations_list, $result_sum_locations); //รวม locations กัับ result
+            // print_r($result_all_sum_rank_locations); // 0 0 1
+            echo json_encode($result_all_sum_rank_locations);
+
         }
     }
 

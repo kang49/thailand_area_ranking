@@ -10,6 +10,7 @@ form.addEventListener('submit', function(e) {
   searchLocation(searchValue);
 });
 
+
 // Define the Leaflet map instance outside of the displayLocationOnMap function
 var map = L.map(
     "map_21a9caeaea6f1d79f9479e397f78d5c4",
@@ -33,7 +34,7 @@ function searchLocation(searchValue) {
         const lat = firstResult.lat;
         const lon = firstResult.lon;
         // Call the function to display the location on the map
-        displayLocationOnMap(lat, lon ,searchValue,null );
+        displayLocationOnMap(lat, lon ,searchValue );
         })
         .catch(error => console.log(error));
 }
@@ -81,25 +82,19 @@ currentLocationButton.addEventListener('click', () => {
   });
 });
 
-var arlocations;
-$(document).ready(function() {
-  $.ajax({
-    url: 'https://tar.tensormik.com/thailand_area_ranking/HeatMap_web/sql_get_data.php',
-    type: 'POST',
-    success: function(response) {
-      arlocations = JSON.parse(response);
-      var heatMap = L.heatLayer(arlocations.map(function(arr) {
-        var latlng = arr[0].split(",");
-        return [latlng[0], latlng[1], arr[1]];
-      }), {
-        max: 1,
-        blur: 15,
-        maxZoom: 16,
-        minOpacity: 0.3,
-        radius: 35
-      }).addTo(map);
-    },
-  });
+// เมื่อรับ Event ชื่อ phpData จากไฟล์ get_obj.js
+document.addEventListener('phpData', function(event) {
+  // ดึงข้อมูลจาก Event.detail
+  var phpData = event.detail;
+  
+  // ทำการประมวลผลข้อมูลต่อไป
+  var heatMap = L.heatLayer(phpData.map(function(arr) {
+    return [arr[0], arr[1], arr[2]];
+  }), {
+    max: 1,
+    blur: 15,
+    maxZoom: 16,
+    minOpacity: 0.3,
+    radius: 35
+  }).addTo(map);
 });
-
-
