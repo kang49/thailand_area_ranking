@@ -707,9 +707,20 @@
     if (!empty($rank1_obj)) {
         $rank1_obj_select = array();
         $map_obj = array(
-            'slum' => $percent_slum_list_int,
-            'pb_trans_value' => $percent_pb_trans_value_list_int,
-            'restaurant_value' => $percent_restaurant_value_list_int,
+            'Slum' => $percent_slum_list_int,
+            'Home Prices' => $percent_currents_price_list_int,
+            'Public Transport' => $percent_pb_trans_value_list_int,
+            'Restaurant' => $percent_restaurant_value_list_int,
+            'Good Plumbing' => $percent_water_stats_list_int,
+            'Cleanliness' => $percent_clean_stats_list_int,
+            'EarthQuake' => $percent_earthquake_list_int,
+            'Walk Way' => $percent_walkway_stats_list_int,
+            'School' => $percent_school_value_list_int,
+            'University' => $percent_university_value_list_int,
+            'AirPorts' => $percent_airport_status_list_int,
+            'Comfortable Temperature' => $percent_temp_avg_list_int,
+            'Near The Sea' => $percent_sea_status_list_int,
+            'Citizen Income' => $percent_citizen_income_avg_list_int,
         );
 
         foreach ($rank1_obj as $char) {
@@ -737,9 +748,20 @@
     if (!empty($rank2_obj)) {
         $rank2_obj_select = array();
         $map_obj = array(
-            'slum' => $percent_slum_list_int,
-            'pb_trans_value' => $percent_pb_trans_value_list_int,
-            'restaurant_value' => $percent_restaurant_value_list_int,
+            'Slum' => $percent_slum_list_int,
+            'Home Prices' => $percent_currents_price_list_int,
+            'Public Transport' => $percent_pb_trans_value_list_int,
+            'Restaurant' => $percent_restaurant_value_list_int,
+            'Good Plumbing' => $percent_water_stats_list_int,
+            'Cleanliness' => $percent_clean_stats_list_int,
+            'EarthQuake' => $percent_earthquake_list_int,
+            'Walk Way' => $percent_walkway_stats_list_int,
+            'School' => $percent_school_value_list_int,
+            'University' => $percent_university_value_list_int,
+            'AirPorts' => $percent_airport_status_list_int,
+            'Comfortable Temperature' => $percent_temp_avg_list_int,
+            'Near The Sea' => $percent_sea_status_list_int,
+            'Citizen Income' => $percent_citizen_income_avg_list_int,
         );
 
         foreach ($rank2_obj as $char) {
@@ -767,9 +789,20 @@
     if (!empty($rank3_obj)) {
         $rank3_obj_select = array();
         $map_obj = array(
-            'slum' => $percent_slum_list_int,
-            'pb_trans_value' => $percent_pb_trans_value_list_int,
-            'restaurant_value' => $percent_restaurant_value_list_int,
+            'Slum' => $percent_slum_list_int,
+            'Home Prices' => $percent_currents_price_list_int,
+            'Public Transport' => $percent_pb_trans_value_list_int,
+            'Restaurant' => $percent_restaurant_value_list_int,
+            'Good Plumbing' => $percent_water_stats_list_int,
+            'Cleanliness' => $percent_clean_stats_list_int,
+            'EarthQuake' => $percent_earthquake_list_int,
+            'Walk Way' => $percent_walkway_stats_list_int,
+            'School' => $percent_school_value_list_int,
+            'University' => $percent_university_value_list_int,
+            'AirPorts' => $percent_airport_status_list_int,
+            'Comfortable Temperature' => $percent_temp_avg_list_int,
+            'Near The Sea' => $percent_sea_status_list_int,
+            'Citizen Income' => $percent_citizen_income_avg_list_int,
         );
 
         foreach ($rank3_obj as $char) {
