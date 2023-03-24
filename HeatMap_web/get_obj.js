@@ -124,8 +124,6 @@ function checktable () {
       if (textRespons == 'Noting') { // มันจะมีการส่งค่า nothing จาก php กลับมาด้วย เมื่อ ไม่มีการใส่ อะไรลงในช่อง ตอนวางเสร็จ
         console.log("Noting")
         newData = [[0,0,0]]
-        var event = new CustomEvent('phpData', { detail: newData });
-        document.dispatchEvent(event);
       } else {
         phpData = JSON.parse(textRespons);
         
@@ -139,9 +137,9 @@ function checktable () {
         });
 
         
-        // สร้าง Event และส่งข้อมูลไปกับ Event
-        var event = new CustomEvent('phpData', { detail: newData });
-        document.dispatchEvent(event);
+      // สร้าง Event และส่งข้อมูลไปกับ Event
+      var event = new CustomEvent('phpData', { detail: newData });
+      document.dispatchEvent(event);
       }
     }
   };
