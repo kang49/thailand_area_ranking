@@ -703,43 +703,189 @@
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+    // RANK1_________________
+    if (!empty($rank1_obj)) {
+        $rank1_obj_select = array();
+        $map_obj = array(
+            'slum' => $percent_slum_list_int,
+            'pb_trans_value' => $percent_pb_trans_value_list_int,
+            'restaurant_value' => $percent_restaurant_value_list_int,
+        );
 
+        foreach ($rank1_obj as $char) {
+            array_push($rank1_obj_select, $map_obj[$char]);
+        }
 
-    //นำเฉพาะค่าที่ผู้ใช้เลืิอกมาคำนวน
-    // $arA = array(1, 2, 3);
-    // $arB = array(4, 5, 6);
-    // $arC = array(7, 8, 9);
+        $locations_percent_sum_rank1 = array_reduce($rank1_obj_select, function ($carry, $arr) {
+            return array_map(function ($rank1_obj, $rank1_obj_select) {
+                return $rank1_obj + $rank1_obj_select;
+            }, $carry, $arr);
+        }, array_fill(0, count($rank1_obj_select), 0));
 
-    // $x = ['a', 'c'];
-
-    $rank1_obj_select = array();
-    $map_obj = array(
-        'slum' => $percent_slum_list_int,
-        'pb_trans_value' => $percent_pb_trans_value_list_int,
-        'restaurant_value' => $percent_restaurant_value_list_int,
-    );
-
-    foreach ($rank1_obj as $char) {
-        array_push($rank1_obj_select, $map_obj[$char]);
+        $locations_percent_max_percent = max($locations_percent_sum_rank1); // หาค่าสูงสุดใน array
+        $percent_sum = 0;
+        foreach ($locations_percent_sum_rank1 as &$value) {
+            $value = round($value / $locations_percent_max_percent * 100, 3); // คำนวณค่าเปอร์เซ็นต์และเปลี่ยนเป็นทศนิยม 3 ตำแหน่ง
+            $percent_sum += $value; // บวกเพื่อหาผลรวมของเปอร์เซ็นต์ทั้งหมด
+            $value = round($value * 10, 3); // Rank 1 * 10
+        }
+        // locations_percent_sum_rank1  RANK1 result
     }
 
-    $locations_percent_sum = array_reduce($rank1_obj_select, function ($carry, $arr) {
-        return array_map(function ($rank1_obj, $rank1_obj_select) {
-            return $rank1_obj + $rank1_obj_select;
-        }, $carry, $arr);
-    }, array_fill(0, count($rank1_obj_select), 0));
 
-    $locations_percent_max_percent = max($locations_percent_sum); // หาค่าสูงสุดใน array
-    $percent_sum = 0;
-    foreach ($locations_percent_sum as &$value) {
-        $value = round($value / $locations_percent_max_percent * 100, 3); // คำนวณค่าเปอร์เซ็นต์และเปลี่ยนเป็นทศนิยม 3 ตำแหน่ง
-        $percent_sum += $value; // บวกเพื่อหาผลรวมของเปอร์เซ็นต์ทั้งหมด
+    // RANK2_________________
+    if (!empty($rank2_obj)) {
+        $rank2_obj_select = array();
+        $map_obj = array(
+            'slum' => $percent_slum_list_int,
+            'pb_trans_value' => $percent_pb_trans_value_list_int,
+            'restaurant_value' => $percent_restaurant_value_list_int,
+        );
+
+        foreach ($rank2_obj as $char) {
+            array_push($rank2_obj_select, $map_obj[$char]);
+        }
+
+        $locations_percent_sum_rank2 = array_reduce($rank2_obj_select, function ($carry, $arr) {
+            return array_map(function ($rank2_obj, $rank2_obj_select) {
+                return $rank2_obj + $rank2_obj_select;
+            }, $carry, $arr);
+        }, array_fill(0, count($rank2_obj_select), 0));
+
+        $locations_percent_max_percent = max($locations_percent_sum_rank2); // หาค่าสูงสุดใน array
+        $percent_sum = 0;
+        foreach ($locations_percent_sum_rank2 as &$value) {
+            $value = round($value / $locations_percent_max_percent * 100, 3); // คำนวณค่าเปอร์เซ็นต์และเปลี่ยนเป็นทศนิยม 3 ตำแหน่ง
+            $percent_sum += $value; // บวกเพื่อหาผลรวมของเปอร์เซ็นต์ทั้งหมด
+            $value = round($value * 6, 3); // Rank 2 * 6
+        }
+        // locations_percent_sum_rank2  RANK2 result
     }
-    $result_locations_percent = array_combine($locations_list, $locations_percent_sum); //รวม locations กัับ ALL result percent
-    print_r($result_locations_percent);
 
 
+    // RANK3_________________
+    if (!empty($rank3_obj)) {
+        $rank3_obj_select = array();
+        $map_obj = array(
+            'slum' => $percent_slum_list_int,
+            'pb_trans_value' => $percent_pb_trans_value_list_int,
+            'restaurant_value' => $percent_restaurant_value_list_int,
+        );
 
+        foreach ($rank3_obj as $char) {
+            array_push($rank3_obj_select, $map_obj[$char]);
+        }
+
+        $locations_percent_sum_rank3 = array_reduce($rank3_obj_select, function ($carry, $arr) {
+            return array_map(function ($rank3_obj, $rank3_obj_select) {
+                return $rank3_obj + $rank3_obj_select;
+            }, $carry, $arr);
+        }, array_fill(0, count($rank3_obj_select), 0));
+
+        $locations_percent_max_percent = max($locations_percent_sum_rank3); // หาค่าสูงสุดใน array
+        $percent_sum = 0;
+        foreach ($locations_percent_sum_rank3 as &$value) {
+            $value = round($value / $locations_percent_max_percent * 100, 3); // คำนวณค่าเปอร์เซ็นต์และเปลี่ยนเป็นทศนิยม 3 ตำแหน่ง
+            $percent_sum += $value; // บวกเพื่อหาผลรวมของเปอร์เซ็นต์ทั้งหมด
+            $value = round($value * 3, 3); // Rank 3 * 3
+        }
+        // locations_percent_sum_rank3  RANK3 result
+    }
+
+
+    //RESULT+++++++++++++++++++++++++++++++++++++++++++++
+    if (empty($rank1_obj)) {
+        if (empty($rank2_obj)) {
+            if (empty($rank3_obj)) {
+                print('Noting'); // 0 0 0
+            }
+        }
+    }
+    if (!empty($rank1_obj)) {
+        if (!empty($rank2_obj)) {
+            if (!empty($rank3_obj)) {
+            $result_sum_locations = array_map(function($a, $b, $c) {
+                return array_sum([$a, $b, $c]);
+            }, $locations_percent_sum_rank1, $locations_percent_sum_rank2, $locations_percent_sum_rank3);
+            $max_value = max($result_sum_locations);
+            $result_sum_locations = array_map(function($value) use ($max_value) {
+                return ($value / $max_value) * 100;
+            }, $result_sum_locations);
+            
+            print_r($result_sum_locations); // 1 1 1
+            }
+            else {
+                $result_sum_locations = array_map(function($a, $b) {
+                    return array_sum([$a, $b]);
+                }, $locations_percent_sum_rank1, $locations_percent_sum_rank2);
+                $max_value = max($result_sum_locations);
+                $result_sum_locations = array_map(function($value) use ($max_value) {
+                    return ($value / $max_value) * 100;
+                }, $result_sum_locations);
+                
+                print_r($result_sum_locations); // 1 1 0
+            }
+        }
+        elseif (!empty($rank3_obj)) {
+            $result_sum_locations = array_map(function($a, $c) {
+                return array_sum([$a, $c]);
+            }, $locations_percent_sum_rank1, $locations_percent_sum_rank3);
+            $max_value = max($result_sum_locations);
+            $result_sum_locations = array_map(function($value) use ($max_value) {
+                return ($value / $max_value) * 100;
+            }, $result_sum_locations);
+            
+            print_r($result_sum_locations); // 1 0 1
+        }
+        else {
+            $result_sum_locations = array_map(function($a) {
+                return array_sum([$a]);
+            }, $locations_percent_sum_rank1);
+            $max_value = max($result_sum_locations);
+            $result_sum_locations = array_map(function($value) use ($max_value) {
+                return ($value / $max_value) * 100;
+            }, $result_sum_locations);
+            
+            print_r($result_sum_locations); // 1 0 0
+        }
+    }
+    elseif (!empty($rank2_obj)) {
+        if (!empty($rank3_obj)) {
+            $result_sum_locations = array_map(function($b, $c) {
+                return array_sum([$b, $c]);
+            }, $locations_percent_sum_rank2, $locations_percent_sum_rank3);
+            $max_value = max($result_sum_locations);
+            $result_sum_locations = array_map(function($value) use ($max_value) {
+                return ($value / $max_value) * 100;
+            }, $result_sum_locations);
+            
+            print_r($result_sum_locations); // 0 1 1
+        }
+        else {
+            $result_sum_locations = array_map(function($b) {
+                return array_sum([$b]);
+            }, $locations_percent_sum_rank2);
+            $max_value = max($result_sum_locations);
+            $result_sum_locations = array_map(function($value) use ($max_value) {
+                return ($value / $max_value) * 100;
+            }, $result_sum_locations);
+            
+            print_r($result_sum_locations); // 0 1 0
+        }
+    }
+    else {
+        if (!empty($rank3_obj)) {
+            $result_sum_locations = array_map(function($c) {
+                return array_sum([$c]);
+            }, $locations_percent_sum_rank3);
+            $max_value = max($result_sum_locations);
+            $result_sum_locations = array_map(function($value) use ($max_value) {
+                return ($value / $max_value) * 100;
+            }, $result_sum_locations);
+            
+            print_r($result_sum_locations); // 0 0 1
+        }
+    }
 
 
 
