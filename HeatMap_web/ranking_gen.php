@@ -44,7 +44,7 @@
     $slum_list = array();
     $currents_price_list = array();
     $pb_trans_value_list = array();
-    $future_price_lsit = array();
+    $future_price_list = array();
     $travel_conven_list = array();
     $restaurant_value_list = array();
     $elctric_stats_list = array();
@@ -62,10 +62,10 @@
             array_push($slum_list, $row_details['slum']);
             array_push($currents_price_list, $row_details['currents_price']);
             array_push($pb_trans_value_list, $row_details['pb_trans_value']);
-            array_push($future_price_lsit, $row_details['future_price']);
-            array_push($travel_conven_list, $row_details['travel_conven']);
+            // array_push($future_price_lsit, $row_details['future_price']);
+            // array_push($travel_conven_list, $row_details['travel_conven']);
             array_push($restaurant_value_list, $row_details['restaurant_value']);
-            array_push($elctric_stats_list, $row_details['elctric_stats']);
+            // array_push($elctric_stats_list, $row_details['elctric_stats']);
             array_push($water_stats_list, $row_details['water_stats']);
             array_push($clean_stats_list, $row_details['clean_stats']);
             array_push($walkway_stats_list, $row_details['walkway_stats']);
@@ -123,7 +123,7 @@
 
 
     //currents_price
-    foreach ($currents_price_list as &$value) { //กลับค่า slum ยิ่งเยอะยิ่งไม่ดี
+    foreach ($currents_price_list as &$value) { //จัดการค่่า null และค่า 0
         if ($value == 0) {
             $value = -1;
         } elseif ($value == null) {
@@ -143,6 +143,266 @@
     foreach ($percent_currents_price_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
+
+
+    //pb_trans_value
+    foreach ($pb_trans_value_list as &$value) { //จัดการค่่า null และค่า 0
+        if ($value == 0) {
+            $value = -1;
+        } elseif ($value == null) {
+            $value = -1;
+        }
+    }
+
+    $max_pb_trans_value = max($pb_trans_value_list);
+
+    // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    $percent_pb_trans_value_list = array();
+    foreach ($pb_trans_value_list as $value) {
+        $percent_pb_trans_value = $value / $max_pb_trans_value * 100;
+        array_push($percent_pb_trans_value_list, $percent_pb_trans_value);
+    }
+    foreach ($percent_pb_trans_value_list as &$value) { //Limit floating points
+        $value = round($value, 3);
+    }
+
+
+
+    //future_price
+    // foreach ($future_price_list as &$value) { //จัดการค่่า null และค่า 0
+    //     if ($value == 0) {
+    //         $value = -1;
+    //     } elseif ($value == null) {
+    //         $value = -1;
+    //     }
+    // }print_r($future_price_list)
+
+    // $max_future_price = max($future_price_list);
+
+    // // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    // $percent_future_price_list = array();
+    // foreach ($future_price_list as $value) {
+    //     $percent_future_price = $value / $max_future_price * 100;
+    //     array_push($percent_future_price_list, $percent_future_price);
+    // }
+    // foreach ($percent_future_price_list as &$value) { //Limit floating points
+    //     $value = round($value, 3);
+
+
+
+
+    //travel_conven
+    // foreach ($travel_conven_list as &$value) { //จัดการค่่า null และค่า 0
+    //     if ($value == 0) {
+    //         $value = -1;
+    //     } elseif ($value == null) {
+    //         $value = -1;
+    //     }
+    // }
+
+    // $max_travel_conven = max($travel_conven_list);
+
+    // // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    // $percent_travel_conven_list = array();
+    // foreach ($travel_conven_list as $value) {
+    //     $percent_travel_conven = $value / $max_travel_conven * 100;
+    //     array_push($percent_travel_conven_list, $percent_travel_conven);
+    // }
+    // foreach ($percent_travel_conven_list as &$value) { //Limit floating points
+    //     $value = round($value, 3);
+    // }
+
+
+
+
+    //restaurant_value
+    foreach ($restaurant_value_list as &$value) { //จัดการค่่า null และค่า 0
+        if ($value == 0) {
+            $value = -1;
+        } elseif ($value == null) {
+            $value = -1;
+        }
+    }
+
+    $max_restaurant_value = max($restaurant_value_list);
+
+    // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    $percent_restaurant_value_list = array();
+    foreach ($restaurant_value_list as $value) {
+        $percent_restaurant_value = $value / $max_restaurant_value * 100;
+        array_push($percent_restaurant_value_list, $percent_restaurant_value);
+    }
+    foreach ($percent_restaurant_value_list as &$value) { //Limit floating points
+        $value = round($value, 3);
+    }
+
+
+
+
+
+    //elctric_stats
+    // foreach ($elctric_stats_list as &$value) { //จัดการค่่า null และค่า 0
+    //     if ($value == 0) {
+    //         $value = -1;
+    //     } elseif ($value == null) {
+    //         $value = -1;
+    //     }
+    // }
+
+    // $max_elctric_stats = max($elctric_stats_list);
+
+    // // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    // $percent_elctric_stats_list = array();
+    // foreach ($elctric_stats_list as $value) {
+    //     $percent_elctric_stats = $value / $max_elctric_stats * 100;
+    //     array_push($percent_elctric_stats_list, $percent_elctric_stats);
+    // }
+    // foreach ($percent_elctric_stats_list as &$value) { //Limit floating points
+    //     $value = round($value, 3);
+    // }
+
+
+
+    // //water_stats
+    foreach ($water_stats_list as &$value) { //จัดการค่่า null และค่า 0
+        if ($value == 0) {
+            $value = -1;
+        } elseif ($value == null) {
+            $value = -1;
+        }
+    }
+
+    $max_water_stats = max($water_stats_list);
+
+    // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    $percent_water_stats_list = array();
+    foreach ($water_stats_list as $value) {
+        $percent_water_stats = $value / $max_water_stats * 100;
+        array_push($percent_water_stats_list, $percent_water_stats);
+    }
+    foreach ($percent_water_stats_list as &$value) { //Limit floating points
+        $value = round($value, 3);
+    }
+
+
+
+
+    //clean_stats
+    foreach ($clean_stats_list as &$value) { //จัดการค่่า null และค่า 0
+        if ($value == 0) {
+            $value = -1;
+        } elseif ($value == null) {
+            $value = -1;
+        }
+    }
+
+    $max_clean_stats = max($clean_stats_list);
+
+    // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    $percent_clean_stats_list = array();
+    foreach ($clean_stats_list as $value) {
+        $percent_clean_stats = $value / $max_clean_stats * 100;
+        array_push($percent_clean_stats_list, $percent_clean_stats);
+    }
+    foreach ($percent_clean_stats_list as &$value) { //Limit floating points
+        $value = round($value, 3);
+    }
+
+
+
+
+    //walkway_stats
+    foreach ($walkway_stats_list as &$value) { //จัดการค่่า null และค่า 0
+        if ($value == 0) {
+            $value = -1;
+        } elseif ($value == null) {
+            $value = -1;
+        }
+    }
+
+    $max_walkway_stats = max($walkway_stats_list);
+
+    // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    $percent_walkway_stats_list = array();
+    foreach ($walkway_stats_list as $value) {
+        $percent_walkway_stats = $value / $max_walkway_stats * 100;
+        array_push($percent_walkway_stats_list, $percent_walkway_stats);
+    }
+    foreach ($percent_walkway_stats_list as &$value) { //Limit floating points
+        $value = round($value, 3);
+    }
+
+
+
+    //earthquake
+    foreach ($earthquake_list as &$value) { //จัดการค่่า null และค่า 0
+        if ($value == 0) {
+            $value = -1;
+        } elseif ($value == null) {
+            $value = -1;
+        }
+    }
+
+    $max_earthquake = max($earthquake_list);
+
+    // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    $percent_earthquake_list = array();
+    foreach ($earthquake_list as $value) {
+        $percent_earthquake = $value / $max_earthquake * 100;
+        array_push($percent_earthquake_list, $percent_earthquake);
+    }
+    foreach ($percent_earthquake_list as &$value) { //Limit floating points
+        $value = round($value, 3);
+    }
+
+
+
+    //school_value
+    foreach ($school_value_list as &$value) { //จัดการค่่า null และค่า 0
+        if ($value == 0) {
+            $value = -1;
+        } elseif ($value == null) {
+            $value = -1;
+        }
+    }
+
+    $max_school_value = max($school_value_list);
+
+    // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    $percent_school_value_list = array();
+    foreach ($school_value_list as $value) {
+        $percent_school_value = $value / $max_school_value * 100;
+        array_push($percent_school_value_list, $percent_school_value);
+    }
+    foreach ($percent_school_value_list as &$value) { //Limit floating points
+        $value = round($value, 3);
+    }
+
+
+
+
+    //university_value
+    foreach ($university_value_list as &$value) { //จัดการค่่า null และค่า 0
+        if ($value == 0) {
+            $value = -1;
+        } elseif ($value == null) {
+            $value = -1;
+        }
+    }
+
+    $max_university_value = max($university_value_list);
+
+    // คำนวณค่าเปอร์เซ็นต์ของแต่ละตัวใน array โดยนำค่าสูงสุดมาเป็น 100%
+    $percent_university_value_list = array();
+    foreach ($university_value_list as $value) {
+        $percent_university_value = $value / $max_university_value * 100;
+        array_push($percent_university_value_list, $percent_university_value);
+    }
+    foreach ($percent_university_value_list as &$value) { //Limit floating points
+        $value = round($value, 3);
+    } print_r($percent_university_value_list)
+
+
 
 
     // if (mysqli_num_rows($result_details) > 0) {
