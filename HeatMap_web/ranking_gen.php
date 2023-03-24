@@ -34,9 +34,12 @@
 
     // Set character set
     mysqli_query($conn, "SET NAMES 'utf8'");
+    
+
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     //Get table details
-    $sql_details = "SELECT * FROM details LIMIT 1000";
+    $sql_details = "SELECT * FROM details ORDER BY `details`.`locations` ASC LIMIT 1000";
     $result_details = mysqli_query($conn, $sql_details);
 
     //create lists for column in details
@@ -81,21 +84,6 @@
 
 
 
-    // Get table city_details
-    $sql_city_details = "SELECT * FROM city_details LIMIT 5";
-    $result_city_details = mysqli_query($conn, $sql_city_details);
-
-    if ($result_city_details && mysqli_num_rows($result_city_details) > 0) {
-        // output data of each row
-        while($row_city_details = mysqli_fetch_assoc($result_city_details)) {
-            // echo json_encode($row_city_details, JSON_UNESCAPED_UNICODE);
-
-        }
-    } else {
-        echo "0 result_city_details";
-    }
-
-
     //คำนวณทุก column ที่มีให้เป็น % โดย locations ที่ column ที่มากที่สุดเป็น 100%
 
     // details column to %
@@ -120,6 +108,7 @@
     foreach ($percent_slum_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
+    $percent_slum_list = array_combine($locations_list, $percent_slum_list); //รวม locations กัับ percent
 
 
     //currents_price
@@ -143,6 +132,7 @@
     foreach ($percent_currents_price_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
+    $percent_currents_price_list = array_combine($locations_list, $percent_currents_price_list); //รวม locations กัับ percent
 
 
     //pb_trans_value
@@ -165,6 +155,7 @@
     foreach ($percent_pb_trans_value_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
+    $percent_pb_trans_value_list = array_combine($locations_list, $percent_pb_trans_value_list); //รวม locations กัับ percent
 
 
 
@@ -187,6 +178,8 @@
     // }
     // foreach ($percent_future_price_list as &$value) { //Limit floating points
     //     $value = round($value, 3);
+    // }
+    // $percent_future_price_list = array_combine($locations_list, $percent_future_price_list); //รวม locations กัับ percent
 
 
 
@@ -211,6 +204,7 @@
     // foreach ($percent_travel_conven_list as &$value) { //Limit floating points
     //     $value = round($value, 3);
     // }
+    // $percent_travel_conven_list = array_combine($locations_list, $percent_travel_conven_list); //รวม locations กัับ percent
 
 
 
@@ -235,6 +229,7 @@
     foreach ($percent_restaurant_value_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
+    $percent_restaurant_value_list = array_combine($locations_list, $percent_restaurant_value_list); //รวม locations กัับ percent
 
 
 
@@ -260,6 +255,7 @@
     // foreach ($percent_elctric_stats_list as &$value) { //Limit floating points
     //     $value = round($value, 3);
     // }
+    // $percent_elctric_stats_list = array_combine($locations_list, $percent_elctric_stats_list); //รวม locations กัับ percent
 
 
 
@@ -283,6 +279,7 @@
     foreach ($percent_water_stats_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
+    $percent_water_stats_list = array_combine($locations_list, $percent_water_stats_list); //รวม locations กัับ percent
 
 
 
@@ -307,6 +304,7 @@
     foreach ($percent_clean_stats_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
+    $percent_clean_stats_list = array_combine($locations_list, $percent_clean_stats_list); //รวม locations กัับ percent
 
 
 
@@ -331,6 +329,7 @@
     foreach ($percent_walkway_stats_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
+    $percent_walkway_stats_list = array_combine($locations_list, $percent_walkway_stats_list); //รวม locations กัับ percent
 
 
 
@@ -354,6 +353,7 @@
     foreach ($percent_earthquake_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
+    $percent_earthquake_list = array_combine($locations_list, $percent_earthquake_list); //รวม locations กัับ percent
 
 
 
@@ -377,6 +377,7 @@
     foreach ($percent_school_value_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
+    $percent_school_value_list = array_combine($locations_list, $percent_school_value_list); //รวม locations กัับ percent
 
 
 
@@ -400,9 +401,30 @@
     }
     foreach ($percent_university_value_list as &$value) { //Limit floating points
         $value = round($value, 3);
-    } print_r($percent_university_value_list)
+    }
+    $percent_university_value_list = array_combine($locations_list, $percent_university_value_list); //รวม locations กัับ percent
 
+  
+  
+  
+  
+  
+  
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+    // Get table city_details
+    $sql_city_details = "SELECT * FROM city_details ORDER BY `city_details`.`name` ASC LIMIT 5";
+    $result_city_details = mysqli_query($conn, $sql_city_details);
+
+    if ($result_city_details && mysqli_num_rows($result_city_details) > 0) {
+        // output data of each row
+        while($row_city_details = mysqli_fetch_assoc($result_city_details)) {
+            // echo json_encode($row_city_details, JSON_UNESCAPED_UNICODE);
+
+        }
+    } else {
+        echo "0 result_city_details";
+    }
 
 
     // if (mysqli_num_rows($result_details) > 0) {
