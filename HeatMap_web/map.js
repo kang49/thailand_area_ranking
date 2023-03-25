@@ -42,7 +42,7 @@ function searchLocation(searchValue) {
 
 let lastMarker;
 
-displayLocationOnMap = function (lat, lon, data) {
+displayLocationOnMap = function (lat, lon, data, multiple=false) {
   // Use the existing Leaflet map instance instead of creating a new one
   map.setView([lat, lon], 13);
 
@@ -53,16 +53,52 @@ displayLocationOnMap = function (lat, lon, data) {
 
   // Remove the last marker if it exists
   if (lastMarker) {
+    if (lastMarker.isArray()) {
+      while (i < lastMarker.length) {
+        map.removeLayer(lastMarker[i])
+        i++
+      }
+    } else {
     map.removeLayer(lastMarker);
+    }
   }
 
-  const marker = L.marker([lat, lon]).addTo(map);
+  if (multiple) {
+    var xhr = new XMLHttpRequest();
+    var data = { 
+      "lat": lat, 
+      "lon": lon 
+    };
+    var json = JSON.stringify(data);
 
-  // Bind a popup with data to the marker
-  marker.bindPopup(`${data} location ${lat} ${lon}`).openPopup();
+    // open the connection to the server
+    xhr.open("POST", "get_locations.php", true);
 
-  // Store the current marker for future removal
-  lastMarker = marker;
+    // set the content type header to JSON
+    xhr.setRequestHeader("Content-type", "application/json");
+
+    // handle the server response
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+        }
+    };
+
+    // send the request to the server
+    xhr.send(json);
+
+    
+  } else {
+
+    const marker = L.marker([lat, lon]).addTo(map);
+
+    // Bind a popup with data to the marker
+    marker.bindPopup(`${data} location ${lat} ${lon}`).openPopup();
+
+    // Store the current marker for future removal
+    lastMarker = marker;
+  }
+
 };
 
 var tile_layer_4b1eafa64c057ad1d516aeb6ba27b84d = L.tileLayer(
@@ -105,4 +141,31 @@ document.addEventListener('phpData', function (event) {
     minOpacity: 0.3,
     radius: 35
   }).addTo(map);
+});
+
+
+// สร้าง Icon object ด้วย Font Awesome
+var faIcon = L.divIcon({
+  html: '<i class="fas fa-map-marker-alt"></i>',
+  iconSize: [30, 30], // ขนาดของ Icon
+  className: "fontawesome-icon" // ชื่อ class สำหรับ Icon
+});
+
+
+map.on("click", function(event) {
+  // ลบ Marker ล่าสุดออกจาก Map (หากมี)
+  if (lastMarker) {
+    map.removeLayer(lastMarker);
+  }
+  // ดึงตำแหน่งที่คลิกจาก event
+  var latlng = event.latlng;
+  // สร้าง Marker ในตำแหน่งที่คลิก
+  var marker = L.marker(latlng, { icon: faIcon }).addTo(map);
+  // เก็บ Marker ในตัวแปร lastMarker
+  lastMarker = marker;
+
+  marker.bindPopup('point ' + latlng).openPopup()
+  
+  // แสดงตำแหน่งที่คลิกใน Console
+  console.log(latlng);
 });

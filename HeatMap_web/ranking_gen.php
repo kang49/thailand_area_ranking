@@ -466,7 +466,7 @@
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // Get table city_details
-    $sql_city_details = "SELECT * FROM city_details ORDER BY `city_details`.`name` ASC";
+    $sql_city_details = "SELECT * FROM details ORDER BY `details`.`locations` ASC";
     $result_city_details = mysqli_query($conn, $sql_city_details);
 
     //create lists for column in city_details
@@ -482,7 +482,6 @@
     if ($result_city_details && mysqli_num_rows($result_city_details) > 0) {
         // output data of each row
         while($row_city_details = mysqli_fetch_assoc($result_city_details)) {
-            array_push($name_list, $row_city_details['name']);
             array_push($airport_status_list, $row_city_details['airport_status']);
             array_push($temp_avg_list, $row_city_details['temp_avg']);
             array_push($sea_status_list, $row_city_details['sea_status']);
@@ -524,7 +523,7 @@
     foreach ($percent_airport_status_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
-    $percent_airport_status_list = array_combine($name_list, $percent_airport_status_list); //รวม locations กัับ percent  
+    $percent_airport_status_list = array_combine($locations_list, $percent_airport_status_list); //รวม locations กัับ percent  
     $percent_airport_status_list_int = array_map(function($value) {
         return number_format($value, 3);
     },  array_values($percent_airport_status_list));
@@ -556,7 +555,7 @@
     foreach ($percent_temp_avg_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
-    $percent_temp_avg_list = array_combine($name_list, $percent_temp_avg_list); //รวม locations กัับ percent  
+    $percent_temp_avg_list = array_combine($locations_list, $percent_temp_avg_list); //รวม locations กัับ percent  
     $percent_temp_avg_list_int = array_map(function($value) {
         return number_format($value, 3);
     },  array_values($percent_temp_avg_list));
@@ -583,7 +582,7 @@
     foreach ($percent_sea_status_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
-    $percent_sea_status_list = array_combine($name_list, $percent_sea_status_list); //รวม locations กัับ percent
+    $percent_sea_status_list = array_combine($locations_list, $percent_sea_status_list); //รวม locations กัับ percent
     $percent_sea_status_list_int = array_map(function($value) {
         return number_format($value, 3);
     },  array_values($percent_sea_status_list));
@@ -611,7 +610,7 @@
     // foreach ($percent_flood_stats_list as &$value) { //Limit floating points
     //     $value = round($value, 3);
     // }
-    // $percent_flood_stats_list = array_combine($name_list, $percent_flood_stats_list); //รวม locations กัับ percent
+    // $percent_flood_stats_list = array_combine($locations_list, $percent_flood_stats_list); //รวม locations กัับ percent
     // $percent_flood_stats_list_int = array_map(function($value) {
     //     return number_format($value, 3);
     // },  array_values($percent_flood_stats_list));
@@ -639,7 +638,7 @@
     // foreach ($percent_tourist_stats_list as &$value) { //Limit floating points
     //     $value = round($value, 3);
     // }
-    // $percent_tourist_stats_list = array_combine($name_list, $percent_tourist_stats_list); //รวม locations กัับ percent
+    // $percent_tourist_stats_list = array_combine($locations_list, $percent_tourist_stats_list); //รวม locations กัับ percent
     // $percent_tourist_stats_list_int = array_map(function($value) {
     //     return number_format($value, 3);
     // },  array_values($percent_tourist_stats_list));
@@ -667,7 +666,7 @@
     // foreach ($percent_employment_stats_list as &$value) { //Limit floating points
     //     $value = round($value, 3);
     // }
-    // $percent_employment_stats_list = array_combine($name_list, $percent_employment_stats_list); //รวม locations กัับ percent
+    // $percent_employment_stats_list = array_combine($locations_list, $percent_employment_stats_list); //รวม locations กัับ percent
     // $percent_employment_stats_list_int = array_map(function($value) {
     //     return number_format($value, 3);
     // },  array_values($percent_employment_stats_list));
@@ -695,7 +694,7 @@
     foreach ($percent_citizen_income_avg_list as &$value) { //Limit floating points
         $value = round($value, 3);
     }
-    $percent_citizen_income_avg_list = array_combine($name_list, $percent_citizen_income_avg_list); //รวม locations กัับ percent
+    $percent_citizen_income_avg_list = array_combine($locations_list, $percent_citizen_income_avg_list); //รวม locations กัับ percent
     $percent_citizen_income_avg_list_int = array_map(function($value) {
         return number_format($value, 3);
     },  array_values($percent_citizen_income_avg_list));
@@ -830,7 +829,7 @@
     if (empty($rank1_obj)) {
         if (empty($rank2_obj)) {
             if (empty($rank3_obj)) {
-                print('Noting'); // 0 0 0
+                print('Nothing'); // 0 0 0
             }
         }
     }
