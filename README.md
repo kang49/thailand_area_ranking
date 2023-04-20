@@ -60,9 +60,6 @@ Thailand Area Ranking is an OpenSource project that helps users find suitable ar
   <img src="https://publicdomainvectors.org/photos/WWW-Icon-White-on-Grey.png" alt="Download Dataset" width="50" height="50">
 </a>
 
-<h2> What's next our plan <img src='https://github.com/kang49/thailand_area_ranking/blob/main/assets/img/next.gif?raw=true' width="100px"></h2>
+<h2> What are we doing now? (Live) <img src='http://g49ds120j.ddns.net:8083/live_debug_img/status.gif' width="50px"></h2>
 
-<p>
-Our plan going forward is to create a website that includes boxes to collect data based on the information we have, and allow users to drag and rank boxes according to their importance. When the user sets all their preferences, they will see the area that best fits their set preferences in a heatmap format, along with a score for each area. In the future, we will also create a library on PIPY to make it easier for other developers to use our open-source software for their applications. 😉
-</p>
-<h6>Kankawee Aramrak 20 Mar 2023</h6>
+<img src="http://g49ds120j.ddns.net:8083/live_debug_img/live_debug_img.png" height="200">
