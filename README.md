@@ -60,6 +60,3 @@ Thailand Area Ranking is an OpenSource project that helps users find suitable ar
   <img src="https://publicdomainvectors.org/photos/WWW-Icon-White-on-Grey.png" alt="Download Dataset" width="50" height="50">
 </a>
 
-<h2> What are we doing now? (Live) <img src='http://g49ds120j.ddns.net:8083/live_debug_img/status.gif' width="50px"></h2>
-
-<img src="http://g49ds120j.ddns.net:8083/live_debug_img/live_debug_img.png" height="200">
