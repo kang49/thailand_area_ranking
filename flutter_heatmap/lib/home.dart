@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -72,11 +73,309 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
-      endDrawer: SafeArea(
-        child: Drawer(
-          backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-          child: Container(
-            child: Text('Test'),
+      endDrawer: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                      topRight: Radius.circular(10.0),
+                    ),
+                  ),
+                  color: Color(0xFF2E4057),
+                  clipBehavior: Clip.hardEdge,
+                  child: InkWell(
+                    splashColor: Colors.blue.withAlpha(30),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: 90,
+                      child: Center(
+                        child: Row(
+                          children: [
+                            Padding(
+                                padding: EdgeInsets.only(left: 20),
+                                child: Text(
+                                  'Personal Priority',
+                                  style: GoogleFonts.kanit(
+                                    textStyle: TextStyle(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.04,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
+                    topRight: Radius.circular(10.0),
+                  ),
+                ),
+                clipBehavior: Clip.hardEdge,
+                child: InkWell(
+                  splashColor: Colors.blue.withAlpha(30),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: 80,
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(left: 20, top: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'First',
+                                style: GoogleFonts.kanit(
+                                  textStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width * 0.03,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            'Drag and drop here',
+                            style: GoogleFonts.kanit(
+                              textStyle: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 0.25),
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.02,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
+                    topRight: Radius.circular(10.0),
+                  ),
+                ),
+                clipBehavior: Clip.hardEdge,
+                child: InkWell(
+                  splashColor: Colors.blue.withAlpha(30),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: 80,
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(left: 20, top: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Second',
+                                style: GoogleFonts.kanit(
+                                  textStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width * 0.03,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            'Drag and drop here',
+                            style: GoogleFonts.kanit(
+                              textStyle: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 0.25),
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.02,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
+                    topRight: Radius.circular(10.0),
+                  ),
+                ),
+                clipBehavior: Clip.hardEdge,
+                child: InkWell(
+                  splashColor: Colors.blue.withAlpha(30),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    height: 80,
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(left: 20, top: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Third',
+                                style: GoogleFonts.kanit(
+                                  textStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize:
+                                        MediaQuery.of(context).size.width * 0.03,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            'Drag and drop here',
+                            style: GoogleFonts.kanit(
+                              textStyle: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 0.25),
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.02,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                      topRight: Radius.circular(10.0),
+                    ),
+                  ),
+                  clipBehavior: Clip.hardEdge,
+                  child: InkWell(
+                    splashColor: Colors.blue.withAlpha(30),
+                    child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        height: 500,
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(left: 20, top: 10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text('Options',
+                                      style: GoogleFonts.kanit(
+                                          textStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      )))
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 120),
+                              child: Text('Scroll to see more options',
+                                  style: GoogleFonts.kanit(
+                                    textStyle: TextStyle(
+                                        color: Color.fromRGBO(0, 0, 0, 0.25)),
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                            ),
+                            Column(
+                              children: [
+                                Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10.0),
+                                      bottomLeft: Radius.circular(10),
+                                      bottomRight: Radius.circular(10),
+                                      topRight: Radius.circular(10.0),
+                                    ),
+                                  ),
+                                  clipBehavior: Clip.hardEdge,
+                                  child: InkWell(
+                                    splashColor: Colors.blue.withAlpha(30),
+                                    child: SizedBox(
+                                      width: MediaQuery.of(context).size.width * 0.4,
+                                      height: 40,
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            padding: EdgeInsets.only(left: 20, top: 10),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Options1',
+                                                  style: GoogleFonts.roboto(
+                                                    textStyle: TextStyle(
+                                                      color: Colors.black,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize:
+                                                          MediaQuery.of(context).size.width * 0.025,
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
